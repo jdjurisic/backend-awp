@@ -17,6 +17,7 @@ public class City {
 
     @Column(unique = true)
     @NotBlank(message = "Unique alphanumeric name is mandatory!")
-    @Pattern(regexp = "^[A-Za-z0-9]+$")
+    @Pattern(regexp = "^[A-Za-z]+$")
     private String name;
+
 }

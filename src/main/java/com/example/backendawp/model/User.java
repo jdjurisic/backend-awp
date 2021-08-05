@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,6 +25,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType type;
 
-    // private List<Booking> bookings;
+    //private List<Reservation> reservations;
 
 }

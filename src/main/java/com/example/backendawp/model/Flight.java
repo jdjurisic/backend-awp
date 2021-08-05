@@ -16,7 +16,12 @@ public class Flight {
 
     //private List<Ticket> tickets;
 
+    @OneToMany(mappedBy = "FLIGHT")
+    @JoinColumn(name = "city_id")
     private City origin;
+
+    @OneToMany(mappedBy = "FLIGHT")
+    @JoinColumn(name = "city_id")
     private City destination;
 
 
