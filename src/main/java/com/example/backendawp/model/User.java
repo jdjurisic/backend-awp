@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "USER")
+@Table(name = "ENDUSER")
 public class User {
 
     @Id
@@ -25,6 +25,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType type;
 
-    //private List<Reservation> reservations;
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
 
 }

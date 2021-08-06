@@ -7,21 +7,20 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "FLIGHT")
+@Table(name = "flight")
 public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //private List<Ticket> tickets;
+    @OneToMany(mappedBy = "flight")
+    private List<Ticket> tickets;
 
-    @OneToMany(mappedBy = "FLIGHT")
-    @JoinColumn(name = "city_id")
+    @ManyToOne
     private City origin;
 
-    @OneToMany(mappedBy = "FLIGHT")
-    @JoinColumn(name = "city_id")
+    @ManyToOne
     private City destination;
 
 

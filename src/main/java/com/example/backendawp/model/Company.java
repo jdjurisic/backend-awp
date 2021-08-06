@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
-@Table(name = "COMPANY")
+@Table(name = "company")
 public class Company {
 
     @Id

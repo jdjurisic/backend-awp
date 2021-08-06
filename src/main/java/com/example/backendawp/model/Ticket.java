@@ -7,22 +7,25 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "TICKET")
+@Table(name = "ticket")
 public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    //private Company company;
+    @ManyToOne
+    private Company company;
 
     private Boolean one_way;
 
     private Date departureDate;
     private Date returnDate;
 
-    //private Flight flight;
+    @ManyToOne
+    @JoinColumn(name = "flight_id", referencedColumnName = "id")
+    private Flight flight;
+
     private Long count;
 
 }
