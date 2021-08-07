@@ -1,6 +1,7 @@
 package com.example.backendawp.service.service_implementation;
 
 import com.example.backendawp.model.User;
+import com.example.backendawp.repository.UserRepository;
 import com.example.backendawp.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,11 @@ import java.util.List;
 @Service
 public class UserServiceImplementation implements UserService {
 
+    private UserRepository userRepository;
+
     @Override
     public User save(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
     @Override
