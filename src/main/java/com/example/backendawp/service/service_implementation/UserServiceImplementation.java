@@ -6,6 +6,7 @@ import com.example.backendawp.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImplementation implements UserService {
@@ -19,31 +20,27 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User update(Long id, User user) {
-        return null;
+        return userRepository.save(user);
     }
 
     @Override
     public void deleteById(Long id) {
-
+        userRepository.deleteById(id);
     }
 
     @Override
-    public User findById(Long id) {
-        return null;
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
     public User findByUsername(String username) {
-        return null;
+        return userRepository.findByUsername(username);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userRepository.findAll();
     }
 
-    @Override
-    public List<String> getTypes() {
-        return null;
-    }
 }

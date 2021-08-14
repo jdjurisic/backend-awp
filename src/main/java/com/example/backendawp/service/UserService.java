@@ -3,6 +3,7 @@ package com.example.backendawp.service;
 import com.example.backendawp.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -12,11 +13,10 @@ public interface UserService {
 
     void deleteById(Long id);
 
-    User findById(Long id);
+    Optional<User> findById(Long id);
 
     User findByUsername(String username);
 
     List<User> findAll();
 
-    List<String> getTypes();
 }
