@@ -17,7 +17,6 @@ public class Company {
 
     @Column(unique = true)
     @NotBlank(message = "Unique alphanumeric name is mandatory!")
-    @Pattern(regexp = "^[A-Za-z0-9]+$", message = "Name can contain only alphanumeric characters!")
     private String name;
 
 }
