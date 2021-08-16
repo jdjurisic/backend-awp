@@ -1,5 +1,7 @@
 package com.example.backendawp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "ENDUSER")
+@Table(name = "enduser")
 public class User {
 
     @Id
@@ -20,12 +22,15 @@ public class User {
     private String username;
 
     @NotBlank
+    @JsonIgnore
     private String password;
 
     @Enumerated(EnumType.STRING)
     private UserType type;
 
     @OneToMany(mappedBy = "user")
+    //@JsonIgnore
+    @JsonIgnoreProperties({"user","flight"})
     private List<Reservation> reservations;
 
 }

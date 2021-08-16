@@ -3,12 +3,14 @@ package com.example.backendawp.service.service_implementation;
 import com.example.backendawp.model.Flight;
 import com.example.backendawp.repository.FlightRepository;
 import com.example.backendawp.service.FlightService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
 public class FlightServiceImplementation implements FlightService {
 
+    @Autowired
     private FlightRepository flightRepository;
 
     @Override

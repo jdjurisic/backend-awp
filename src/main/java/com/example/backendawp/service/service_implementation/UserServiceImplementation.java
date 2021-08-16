@@ -2,7 +2,12 @@ package com.example.backendawp.service.service_implementation;
 
 import com.example.backendawp.model.User;
 import com.example.backendawp.repository.UserRepository;
+import com.example.backendawp.security.UserAdmin;
 import com.example.backendawp.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,11 +16,26 @@ import java.util.Optional;
 @Service
 public class UserServiceImplementation implements UserService {
 
+    @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
-    public User save(User user) {
-        return userRepository.save(user);
+    public User save(User user){
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (UserAdmin.isRole_admin(userDetails)){
+            String pass = user.getPassword();
+            if(pass.length() < 6 || !pass.matches("[A-Za-z0-9 ]+")){
+                throw new RuntimeException("Invalid properties");
+            }
+            String encryptedPass = passwordEncoder.encode(pass);
+            user.setPassword(encryptedPass);
+            return userRepository.save(user);
+        }
+        return null;
     }
 
     @Override

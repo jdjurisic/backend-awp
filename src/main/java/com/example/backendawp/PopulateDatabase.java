@@ -4,6 +4,7 @@ import com.example.backendawp.model.*;
 import com.example.backendawp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -29,18 +30,23 @@ public class PopulateDatabase implements CommandLineRunner {
     @Autowired
     private ReservationRepository reservationRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void run(String... args) throws Exception {
+
+        String encrp1 = passwordEncoder.encode("Sifra123");
 
         // create users
         User user1 = new User();
         user1.setUsername("Korisnik");
-        user1.setPassword("Sifra123");
+        user1.setPassword(encrp1);
         user1.setType(UserType.USER);
 
         User user2 = new User();
         user2.setUsername("Admin");
-        user2.setPassword("Sifra123");
+        user2.setPassword(encrp1);
         user2.setType(UserType.ADMIN);
 
         userRepository.save(user1);

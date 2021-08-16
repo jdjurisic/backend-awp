@@ -1,5 +1,7 @@
 package com.example.backendawp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,6 +26,7 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "flight_id", referencedColumnName = "id")
+    @JsonIgnoreProperties({"tickets"})
     private Flight flight;
 
     private Long count;

@@ -3,6 +3,7 @@ package com.example.backendawp.service.service_implementation;
 import com.example.backendawp.model.Company;
 import com.example.backendawp.repository.CompanyRepository;
 import com.example.backendawp.service.CompanyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @Service
 public class CompanyServiceImplementation implements CompanyService {
 
+    @Autowired
     private CompanyRepository companyRepository;
 
     @Override
