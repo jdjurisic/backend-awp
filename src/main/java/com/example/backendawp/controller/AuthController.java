@@ -5,6 +5,7 @@ import com.example.backendawp.security.AuthRequest;
 import com.example.backendawp.security.MyUserDetails;
 import com.example.backendawp.security.MyUserDetailsService;
 import com.example.backendawp.util.JwtUtil;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,7 +30,7 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> login(@RequestBody AuthRequest authenticationRequest) {
+    public ResponseEntity<? extends Object> login(@RequestBody AuthRequest authenticationRequest) {
 
         try {
 
@@ -46,7 +47,18 @@ public class AuthController {
         UserType type = userDetails.getUser().getType();
         final String jwt = jwtUtil.generateToken(userDetails);
 
-        return new ResponseEntity<>(jwt,HttpStatus.OK);
+
+        // anonymous auth response
+        @Data
+        class AuthResponse{
+            private String jwt;
+
+            public AuthResponse(String jwt){
+                this.jwt = jwt;
+            }
+        }
+
+        return new ResponseEntity<AuthResponse>(new AuthResponse(jwt),HttpStatus.OK);
 
     }
 

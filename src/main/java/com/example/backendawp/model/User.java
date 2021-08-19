@@ -29,7 +29,6 @@ public class User {
     private UserType type;
 
     @OneToMany(mappedBy = "user")
-    //@JsonIgnore
     @JsonIgnoreProperties({"user","flight"})
     private List<Reservation> reservations;
 
