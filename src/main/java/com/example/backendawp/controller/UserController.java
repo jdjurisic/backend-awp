@@ -2,15 +2,13 @@ package com.example.backendawp.controller;
 
 import com.example.backendawp.model.User;
 import com.example.backendawp.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -24,6 +22,7 @@ public class UserController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> save(@Valid @RequestBody User user){
         return new ResponseEntity<>(service.save(user), HttpStatus.CREATED);
@@ -44,19 +43,13 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-    @GetMapping("/{userId}")
-    public ResponseEntity<Optional<User>> findById( @PathVariable Long userId){
-        return new ResponseEntity<Optional<User>>(service.findById(userId), HttpStatus.OK);
-    }
-
-
+    @PreAuthorize("#username == authentication.principal.username")
     @GetMapping("/getByUsername/{username}")
     public ResponseEntity<User> findByUsername( @PathVariable String username){
         return new ResponseEntity<>(service.findByUsername(username), HttpStatus.OK);
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/all")
     public List<User> findAll(){
         return service.findAll();
