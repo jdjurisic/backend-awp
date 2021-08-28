@@ -4,10 +4,12 @@ import com.example.backendawp.model.Flight;
 import com.example.backendawp.repository.FlightRepository;
 import com.example.backendawp.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class FlightServiceImplementation implements FlightService {
 
     @Autowired

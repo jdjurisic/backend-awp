@@ -36,7 +36,7 @@ public class UserController {
         return new ResponseEntity<>(service.update(userId, user), HttpStatus.CREATED);
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteById(@PathVariable Long userId){
         service.deleteById(userId);
