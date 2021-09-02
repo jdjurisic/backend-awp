@@ -16,7 +16,6 @@ public class CityController {
 
     private final CityService cityService;
 
-
     public CityController(CityService cityService) {
         this.cityService = cityService;
     }
@@ -25,4 +24,5 @@ public class CityController {
     public List<City> findAll(){
         return cityService.findAll();
     }
+
 }

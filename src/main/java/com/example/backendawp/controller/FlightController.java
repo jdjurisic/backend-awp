@@ -33,4 +33,12 @@ public class FlightController {
     public List<Flight> findAll(){
         return flightService.findAll();
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/{flightId}")
+    public ResponseEntity<Flight> update(@PathVariable Long flightId, @Valid @RequestBody Flight flight){
+        if(flightService.findById(flightId) == null) return null;
+        return new ResponseEntity<>(flightService.update(flightId,flight), HttpStatus.CREATED);
+    }
+
 }

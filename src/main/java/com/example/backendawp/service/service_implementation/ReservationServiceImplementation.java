@@ -4,10 +4,12 @@ import com.example.backendawp.model.Reservation;
 import com.example.backendawp.repository.ReservationRepository;
 import com.example.backendawp.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ReservationServiceImplementation implements ReservationService {
 
     @Autowired

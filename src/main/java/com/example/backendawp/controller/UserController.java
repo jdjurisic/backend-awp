@@ -55,4 +55,11 @@ public class UserController {
         return service.findAll();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/types")
+    public List<String> getTypes(){
+        return service.getTypes();
+    }
+
+
 }

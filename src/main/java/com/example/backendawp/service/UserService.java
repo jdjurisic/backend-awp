@@ -19,4 +19,6 @@ public interface UserService {
 
     List<User> findAll();
 
+    List<String> getTypes();
+
 }

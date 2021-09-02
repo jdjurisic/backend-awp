@@ -24,4 +24,5 @@ public class CompanyController {
     public List<Company> findAll(){
         return companyService.findAll();
     }
+
 }

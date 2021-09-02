@@ -59,4 +59,9 @@ public class UserServiceImplementation implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public List<String> getTypes() {
+        return userRepository.getTypes();
+    }
+
 }
