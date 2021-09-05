@@ -4,6 +4,9 @@ import com.example.backendawp.model.Ticket;
 import com.example.backendawp.repository.TicketRepository;
 import com.example.backendawp.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,4 +42,11 @@ public class TicketServiceImplementation implements TicketService {
     public List<Ticket> findAll() {
         return ticketRepository.findAll();
     }
+
+    @Override
+    public Page<Ticket> findAllPaginated(Integer pageNo, Integer pageSize) {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        return ticketRepository.findAll(paging);
+    }
+
 }

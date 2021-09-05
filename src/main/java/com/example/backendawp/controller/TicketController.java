@@ -5,6 +5,7 @@ import com.example.backendawp.model.Company;
 import com.example.backendawp.model.Flight;
 import com.example.backendawp.model.Ticket;
 import com.example.backendawp.service.TicketService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,4 +36,10 @@ public class TicketController {
     public List<Ticket> findAll(){
         return ticketService.findAll();
     }
+
+    @GetMapping("/{pageNo}")
+    public Page pagintatedTickets(@PathVariable Integer pageNo){
+        return this.ticketService.findAllPaginated(pageNo,10);
+    }
+
 }
