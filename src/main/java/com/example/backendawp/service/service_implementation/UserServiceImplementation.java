@@ -24,6 +24,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     public User save(User user){
 
+        System.out.println(user);
         String pass = user.getPassword();
         if(pass.length() < 6 || !pass.matches("[A-Za-z0-9 ]+")){
             throw new RuntimeException("Invalid properties");

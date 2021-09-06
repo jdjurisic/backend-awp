@@ -42,6 +42,7 @@ public class CompanyServiceImplementation implements CompanyService {
 
     @Override
     public List<Company> findAll() {
-        return null;
+        return companyRepository.findAll();
     }
+
 }
