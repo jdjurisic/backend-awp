@@ -19,7 +19,7 @@ public class Ticket {
     @ManyToOne
     private Company company;
 
-    private Boolean one_way;
+    private Boolean oneway;
 
     private Date departureDate;
     private Date returnDate;

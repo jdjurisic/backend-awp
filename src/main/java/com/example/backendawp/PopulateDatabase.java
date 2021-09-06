@@ -99,14 +99,14 @@ public class PopulateDatabase implements CommandLineRunner {
         ticket1.setCompany(comp1);
         ticket1.setCount(100L);
         ticket1.setFlight(flight1);
-        ticket1.setOne_way(true);
+        ticket1.setOneway(true);
         ticket1.setDepartureDate(new Date());
 
         Ticket ticket2 = new Ticket();
         ticket2.setCompany(comp2);
         ticket2.setCount(60L);
         ticket2.setFlight(flight2);
-        ticket2.setOne_way(false);
+        ticket2.setOneway(false);
         ticket2.setDepartureDate(new Date());
         ticket2.setReturnDate(new Date());
 

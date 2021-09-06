@@ -49,4 +49,16 @@ public class TicketServiceImplementation implements TicketService {
         return ticketRepository.findAll(paging);
     }
 
+    @Override
+    public Page<Ticket> onewayPaginated(Integer pageNo, Integer pageSize) {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        return ticketRepository.findAllByOneway(paging,true);
+    }
+
+    @Override
+    public Page<Ticket> roundtripPaginated(Integer pageNo, Integer pageSize) {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        return ticketRepository.findAllByOneway(paging,false);
+    }
+
 }

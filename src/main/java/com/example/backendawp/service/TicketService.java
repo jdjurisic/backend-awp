@@ -20,4 +20,9 @@ public interface TicketService {
     List<Ticket> findAll();
 
     Page<Ticket> findAllPaginated(Integer pageNo, Integer pageSize);
+
+    Page<Ticket> onewayPaginated(Integer pageNo, Integer pageSize);
+
+    Page<Ticket> roundtripPaginated(Integer pageNo, Integer pageSize);
+
 }
