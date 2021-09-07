@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,7 +69,10 @@ public class ReservationController {
         Optional<Reservation> res = reservationService.findById(resId);
         Optional<Ticket> tick = ticketService.findById(res.get().getTicket().getId());
 
-        if(res.isPresent()){
+        Date today = new Date();
+        Date tomorrow = new Date(today. getTime() + (1000 * 60 * 60 * 24));
+
+        if(res.isPresent() && res.get().getTicket().getDepartureDate().after(tomorrow)){
 
             reservationService.deleteById(resId);
             tick.get().setCount(tick.get().getCount() + 1);
