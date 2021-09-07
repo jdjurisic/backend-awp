@@ -33,24 +33,19 @@ public class TicketController {
         return new ResponseEntity<>(ticketService.save(ticket), HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
-    public List<Ticket> findAll(){
-        return ticketService.findAll();
-    }
-
-    @GetMapping("all/{pageNo}")
+    @GetMapping("/all/{pageNo}")
     public Page pagintatedTickets(@PathVariable Integer pageNo){
-        return ticketService.findAllPaginated(pageNo,10);
+        return ticketService.findAllPaginated(pageNo,5);
     }
 
     @GetMapping("/oneway/{pageNo}")
     public Page onewayTickets(@PathVariable Integer pageNo){
-        return ticketService.onewayPaginated(pageNo,10);
+        return ticketService.onewayPaginated(pageNo,5);
     }
 
     @GetMapping("/roundtrip/{pageNo}")
     public Page roundtripTickets(@PathVariable Integer pageNo){
-        return ticketService.roundtripPaginated(pageNo,10);
+        return ticketService.roundtripPaginated(pageNo,5);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

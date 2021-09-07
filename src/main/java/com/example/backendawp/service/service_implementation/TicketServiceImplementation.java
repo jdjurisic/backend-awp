@@ -61,4 +61,9 @@ public class TicketServiceImplementation implements TicketService {
         return ticketRepository.findAllByOneway(paging,false);
     }
 
+    @Override
+    public List<Ticket> findByCompanyId(Long id) {
+        return ticketRepository.findAllByCompanyId(id);
+    }
+
 }

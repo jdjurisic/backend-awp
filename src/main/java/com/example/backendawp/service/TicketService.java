@@ -25,4 +25,6 @@ public interface TicketService {
 
     Page<Ticket> roundtripPaginated(Integer pageNo, Integer pageSize);
 
+    List<Ticket> findByCompanyId(Long id);
+
 }
