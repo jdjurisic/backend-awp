@@ -19,7 +19,7 @@ public class Reservation {
     @JoinColumn(name = "flight_id", referencedColumnName = "id")
     private Flight flight;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "ticket_id", referencedColumnName = "id")
     private Ticket ticket;
 

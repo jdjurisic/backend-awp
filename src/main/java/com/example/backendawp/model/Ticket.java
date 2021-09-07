@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,5 +31,9 @@ public class Ticket {
     private Flight flight;
 
     private Long count;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket", orphanRemoval = true)
+    @JsonIgnore
+    private List<Reservation> reservations;
 
 }

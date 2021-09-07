@@ -39,17 +39,26 @@ public class TicketController {
 
     @GetMapping("/{pageNo}")
     public Page pagintatedTickets(@PathVariable Integer pageNo){
-        return this.ticketService.findAllPaginated(pageNo,10);
+        return ticketService.findAllPaginated(pageNo,10);
     }
 
     @GetMapping("/oneway/{pageNo}")
     public Page onewayTickets(@PathVariable Integer pageNo){
-        return this.ticketService.onewayPaginated(pageNo,10);
+        return ticketService.onewayPaginated(pageNo,10);
     }
 
     @GetMapping("/roundtrip/{pageNo}")
     public Page roundtripTickets(@PathVariable Integer pageNo){
-        return this.ticketService.roundtripPaginated(pageNo,10);
+        return ticketService.roundtripPaginated(pageNo,10);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteTicket(@PathVariable Long id) {
+        if(ticketService.findById(id).isPresent()){
+            ticketService.deleteById(id);
+            return new ResponseEntity<>(true,HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
     }
 
 }
