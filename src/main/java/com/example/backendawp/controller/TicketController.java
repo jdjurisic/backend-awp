@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tickets")
@@ -37,7 +38,7 @@ public class TicketController {
         return ticketService.findAll();
     }
 
-    @GetMapping("/{pageNo}")
+    @GetMapping("all/{pageNo}")
     public Page pagintatedTickets(@PathVariable Integer pageNo){
         return ticketService.findAllPaginated(pageNo,10);
     }
@@ -52,6 +53,7 @@ public class TicketController {
         return ticketService.roundtripPaginated(pageNo,10);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteTicket(@PathVariable Long id) {
         if(ticketService.findById(id).isPresent()){
@@ -61,4 +63,26 @@ public class TicketController {
         return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Ticket> getTicket(@PathVariable Long id){
+        Optional<Ticket> t = ticketService.findById(id);
+        if(t.isPresent()){
+            return new ResponseEntity<Ticket>(t.get(),HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<Ticket>(HttpStatus.BAD_REQUEST);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/{ticketId}")
+    public ResponseEntity<Ticket> update(@PathVariable Long ticketId, @Valid @RequestBody Ticket ticket){
+        Optional<Ticket> t = ticketService.findById(ticketId);
+        if(t.isPresent()){
+            Ticket updatedTicket = ticketService.update(ticketId,ticket);
+            if(updatedTicket == null){
+                return new ResponseEntity<Ticket>(HttpStatus.BAD_REQUEST);
+            }
+            return new ResponseEntity<Ticket>(updatedTicket,HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<Ticket>(HttpStatus.BAD_REQUEST);
+    }
 }

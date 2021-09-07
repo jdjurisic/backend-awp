@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +22,12 @@ public class Ticket {
     @ManyToOne
     private Company company;
 
+    @NotNull
     private Boolean oneway;
 
+    @NotNull
     private Date departureDate;
+
     private Date returnDate;
 
     @ManyToOne
@@ -32,7 +37,7 @@ public class Ticket {
 
     private Long count;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket")
     @JsonIgnore
     private List<Reservation> reservations;
 
