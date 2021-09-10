@@ -155,75 +155,75 @@ public class PopulateDatabase implements CommandLineRunner {
         ticket2.setReturnDate(new Date());
 
         Ticket ticket3 = new Ticket();
-        ticket3.setCompany(comp1);
-        ticket3.setCount(99L);
-        ticket3.setFlight(flight1);
+        ticket3.setCompany(comp3);
+        ticket3.setCount(100L);
+        ticket3.setFlight(flight3);
         ticket3.setOneway(true);
         ticket3.setDepartureDate(new Date());
 
         Ticket ticket4 = new Ticket();
-        ticket4.setCompany(comp2);
-        ticket4.setCount(59L);
-        ticket4.setFlight(flight2);
+        ticket4.setCompany(comp4);
+        ticket4.setCount(50L);
+        ticket4.setFlight(flight4);
         ticket4.setOneway(false);
         ticket4.setDepartureDate(new Date());
         ticket4.setReturnDate(new Date());
 
         Ticket ticket5 = new Ticket();
-        ticket5.setCompany(comp1);
-        ticket5.setCount(99L);
-        ticket5.setFlight(flight1);
+        ticket5.setCompany(comp5);
+        ticket5.setCount(150L);
+        ticket5.setFlight(flight5);
         ticket5.setOneway(true);
         ticket5.setDepartureDate(new Date());
 
         Ticket ticket6 = new Ticket();
-        ticket6.setCompany(comp2);
-        ticket6.setCount(59L);
-        ticket6.setFlight(flight2);
+        ticket6.setCompany(comp6);
+        ticket6.setCount(80L);
+        ticket6.setFlight(flight6);
         ticket6.setOneway(false);
         ticket6.setDepartureDate(new Date());
         ticket6.setReturnDate(new Date());
 
         Ticket ticket7 = new Ticket();
         ticket7.setCompany(comp1);
-        ticket7.setCount(99L);
-        ticket7.setFlight(flight1);
+        ticket7.setCount(40L);
+        ticket7.setFlight(flight4);
         ticket7.setOneway(true);
         ticket7.setDepartureDate(new Date());
 
         Ticket ticket8 = new Ticket();
         ticket8.setCompany(comp2);
-        ticket8.setCount(59L);
-        ticket8.setFlight(flight2);
+        ticket8.setCount(200L);
+        ticket8.setFlight(flight1);
         ticket8.setOneway(false);
         ticket8.setDepartureDate(new Date());
         ticket8.setReturnDate(new Date());
 
         Ticket ticket9 = new Ticket();
         ticket9.setCompany(comp1);
-        ticket9.setCount(99L);
-        ticket9.setFlight(flight1);
+        ticket9.setCount(50L);
+        ticket9.setFlight(flight6);
         ticket9.setOneway(true);
         ticket9.setDepartureDate(new Date());
 
         Ticket ticket10 = new Ticket();
         ticket10.setCompany(comp2);
-        ticket10.setCount(59L);
-        ticket10.setFlight(flight2);
+        ticket10.setCount(60L);
+        ticket10.setFlight(flight3);
         ticket10.setOneway(false);
         ticket10.setDepartureDate(new Date());
         ticket10.setReturnDate(new Date());
 
         Ticket ticket11 = new Ticket();
         ticket11.setCompany(comp1);
-        ticket11.setCount(99L);
-        ticket11.setFlight(flight1);
+        ticket11.setCount(120L);
+        ticket11.setFlight(flight5);
         ticket11.setOneway(true);
         ticket11.setDepartureDate(new Date());
 
         Ticket ticket12 = new Ticket();
-        ticket12.setCompany(comp2);
-        ticket12.setCount(59L);
+        ticket12.setCompany(comp5);
+        ticket12.setCount(50L);
         ticket12.setFlight(flight2);
         ticket12.setOneway(false);
         ticket12.setDepartureDate(new Date());

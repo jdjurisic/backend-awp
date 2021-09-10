@@ -63,4 +63,15 @@ public class CompanyController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/tickets/{id}")
+    public ResponseEntity<List<Ticket>> getTicketsForCompany(@PathVariable Long id){
+        return new ResponseEntity<>(ticketService.findByCompanyId(id),HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Company> edit(@Valid @RequestBody Company company){
+        return new ResponseEntity<>(companyService.save(company),HttpStatus.ACCEPTED);
+    }
+
 }
